@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Diáspora Afegã | Missão Recomeço • Edição Premium</title>
+    <!-- Tailwind CSS + Font Awesome + Google Fonts Premium -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            background: radial-gradient(ellipse at top, #0a0f1c 0%, #03050a 100%);
+            overflow-x: hidden;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .card-premium {
+            background: rgba(10, 25, 47, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 176, 66, 0.3);
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .card-premium:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(245, 176, 66, 0.7);
+            box-shadow: 0 30px 50px -15px rgba(245,176,66,0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #F5B042 0%, #FFD966 40%, #00D2FF 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* BOTÕES CORRIGIDOS - SUPER LEGÍVEIS */
+        .btn-responder {
+            background: linear-gradient(135deg, #F5B042 0%, #FFB347 100%);
+            color: #0a0a0a;
+            font-weight: 800;
+            text-shadow: none;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .btn-responder:hover:not(:disabled) {
+            background: linear-gradient(135deg, #FFB347 0%, #FFD966 100%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(245,176,66,0.5);
+        }
+        .btn-responder:disabled {
+            background: #4a4a4a;
+            color: #888;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .btn-proximo {
+            background: linear-gradient(135deg, #00D2FF 0%, #00A3CC 100%);
+            color: #ffffff;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .btn-proximo:hover {
+            background: linear-gradient(135deg, #33DDFF 0%, #00B8E6 100%);
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0,210,255,0.4);
+        }
+        
+        .btn-anterior {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: #ffffff;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .btn-anterior:hover {
+            background: linear-gradient(135deg, #868e96 0%, #5a6268 100%);
+            transform: scale(1.02);
+        }
+        
+        /* Quiz opções com melhor contraste */
+        .quiz-option-correct {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: #22c55e;
+        }
+        .quiz-option-wrong {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: #ef4444;
+        }
+        .quiz-option-selected {
+            background: rgba(245, 176, 66, 0.35);
+            border-color: #F5B042;
+            box-shadow: 0 0 8px rgba(245,176,66,0.4);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: #050a12;
+        }
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(180deg, #0A192F, #03050a);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #F5B042, #FFD966);
+            border-radius: 10px;
+        }
+        .img-premium {
+            transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .img-premium:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .minecraft-credits-premium {
+            background: #0a0a0a;
+            background-image: repeating-linear-gradient(0deg, #2a2a2a 0px, #2a2a2a 1px, #1a1a1a 1px, #1a1a1a 8px);
+            box-shadow: 0 0 40px rgba(245,176,66,0.2);
+        }
+        .stat-badge-premium {
+            background: rgba(0, 210, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,210,255,0.4);
+            transition: all 0.3s;
+        }
+        .stat-badge-premium:hover {
+            background: rgba(245,176,66,0.2);
+            border-color: #F5B042;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100">
+
+    <div id="particles-js"></div>
+
+    <div class="relative z-10">
+        <!-- HEADER PREMIUM -->
+        <header class="relative overflow-hidden border-b border-afghan-gold/30 bg-gradient-to-br from-[#0A192F]/95 via-[#0F1A2E]/90 to-[#0A0F1C]/95 backdrop-blur-md">
+            <div class="container mx-auto px-5 py-12 md:py-16 text-center max-w-6xl relative">
+                <div class="flex justify-center gap-4 mb-4">
+                    <i class="fas fa-people-arrows text-5xl text-afghan-gold animate-bounce"></i>
+                    <i class="fas fa-shield-alt text-5xl text-cyber-blue animate-pulse"></i>
+                    <i class="fas fa-globe-asia text-5xl text-afghan-gold animate-bounce"></i>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-3">
+                    <span class="gradient-text">OPERATION: RECOMEÇO</span>
+                </h1>
+                <p class="text-2xl md:text-3xl font-light mt-2 text-afghan-gold/90 italic">Refugiados afegãos em São Paulo — coragem, resistência e esperança</p>
+                <div class="flex flex-wrap justify-center gap-3 mt-6">
+                    <div class="stat-badge-premium px-5 py-2 rounded-full text-sm font-semibold"><i class="fas fa-user-graduate"></i> Luan B. Lins | 9°A</div>
+                    <div class="stat-badge-premium px-5 py-2 rounded-full text-sm font-semibold"><i class="fas fa-chalkboard-teacher"></i> Profª Gislaine</div>
+                    <div class="stat-badge-premium px-5 py-2 rounded-full text-sm font-semibold"><i class="fas fa-star-of-life"></i> Kamilly da Cruz</div>
+                </div>
+                <div class="h-1 w-40 bg-gradient-to-r from-afghan-gold via-cyber-blue to-afghan-gold mx-auto mt-8 rounded-full"></div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-5 md:px-8 py-14 max-w-7xl">
+            
+            <!-- 1. ORIGEM -->
+            <section class="mb-20 animate-fade-up delay-100">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-afghan-gold/30 to-cyber-blue/30 p-3 rounded-2xl"><i class="fas fa-landmark text-3xl text-afghan-gold"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">01.</span> Berço nas montanhas</h2>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div class="card-premium rounded-3xl p-7">
+                        <p class="leading-relaxed text-gray-200 text-lg"><span class="font-bold text-afghan-gold text-xl">Afeganistão</span> — coração estratégico da Ásia Central, onde as montanhas Hindu Kush encontram a resiliência humana. Um país de contrastes: belezas naturais estonteantes e décadas de conflitos que forjaram um povo indomável.</p>
+                        <p class="mt-4 text-gray-300">Com mais de <span class="text-cyber-blue font-bold">40 milhões</span> de habitantes, o Afeganistão possui um mosaico étnico rico (pashtuns, tadjiques, hazaras). Seu IDH é um dos mais baixos do mundo (0,478).</p>
+                        <div class="mt-5 flex gap-3 text-sm">
+                            <span class="bg-afghan-gold/20 px-3 py-1 rounded-full"><i class="fas fa-language"></i> Dari/Pashto</span>
+                            <span class="bg-cyber-blue/20 px-3 py-1 rounded-full"><i class="fas fa-mosque"></i> Islã 99%</span>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-afghan-gold/40 h-80 lg:h-auto">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/4f/80/f2/hindu-kush-mountains.jpg?w=1200&h=-1&s=1" alt="Hindu Kush" class="w-full h-full object-cover img-premium">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. MOTIVOS -->
+            <section class="mb-20 animate-fade-up delay-200">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-red-500/30 to-amber-600/30 p-3 rounded-2xl"><i class="fas fa-fist-raised text-3xl text-red-400"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">02.</span> A fuga da escuridão</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-premium rounded-3xl p-7 border-l-8 border-red-500">
+                        <i class="fas fa-calendar-alt text-4xl text-red-400 mb-3"></i>
+                        <h3 class="text-2xl font-bold mb-2">Agosto de 2021: A Queda</h3>
+                        <p class="text-gray-300">Com a retirada das tropas internacionais, o Talibã reassumiu o poder. Instaurou-se um regime de terror: execuções, caça a opositores e apartheid de gênero.</p>
+                    </div>
+                    <div class="card-premium rounded-3xl p-7 border-l-8 border-amber-500">
+                        <i class="fas fa-venus-double text-4xl text-amber-400 mb-3"></i>
+                        <h3 class="text-2xl font-bold mb-2">Mulheres: apagadas</h3>
+                        <p class="text-gray-300">Meninas proibidas de estudar, mulheres impedidas de trabalhar, viajar ou existir em público sem burca. Milhares fugiram.</p>
+                    </div>
+                </div>
+                <div class="mt-6 card-premium rounded-2xl p-5 text-center"><i class="fas fa-database text-afghan-gold"></i> <strong>ACNUR:</strong> +8 milhões de afegãos deslocados. Brasil concedeu +13 mil vistos humanitários desde 2021.</div>
+            </section>
+
+            <!-- 3. SÃO PAULO -->
+            <section class="mb-20 animate-fade-up delay-300">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-emerald-500/30 to-teal-500/30 p-3 rounded-2xl"><i class="fas fa-passport text-3xl text-emerald-400"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">03.</span> Por que São Paulo?</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-7">
+                    <div class="card-premium rounded-2xl p-6 text-center"><i class="fas fa-stamp text-5xl text-emerald-400 mb-3"></i><h3 class="text-xl font-bold">Visto Humanitário</h3><p class="text-gray-300">Portaria nº 21/2021 — acolhida legal via Guarulhos</p></div>
+                    <div class="card-premium rounded-2xl p-6 text-center"><i class="fas fa-hand-holding-heart text-5xl text-emerald-400 mb-3"></i><h3 class="text-xl font-bold">Rede de Apoio</h3><p class="text-gray-300">Cáritas, Adus, +100 ONGs e abrigos</p></div>
+                    <div class="card-premium rounded-2xl p-6 text-center"><i class="fas fa-chart-line text-5xl text-emerald-400 mb-3"></i><h3 class="text-xl font-bold">Oportunidades</h3><p class="text-gray-300">Maior polo econômico da América Latina</p></div>
+                </div>
+            </section>
+
+            <!-- 4. DESAFIOS -->
+            <section class="mb-20 animate-fade-up delay-400">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-orange-500/30 to-red-500/30 p-3 rounded-2xl"><i class="fas fa-language text-3xl text-orange-400"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">04.</span> Obstáculos no caminho</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-premium p-5 text-center rounded-2xl"><i class="fas fa-comment-dots text-4xl text-orange-400 mb-2"></i><p class="font-bold">Idioma</p><p class="text-sm text-gray-400">Dari/Pashto → Português</p></div>
+                    <div class="card-premium p-5 text-center rounded-2xl"><i class="fas fa-home text-4xl text-orange-400 mb-2"></i><p class="font-bold">Moradia</p><p class="text-sm text-gray-400">Preconceito e aluguel alto</p></div>
+                    <div class="card-premium p-5 text-center rounded-2xl"><i class="fas fa-graduation-cap text-4xl text-orange-400 mb-2"></i><p class="font-bold">Revalidação</p><p class="text-sm text-gray-400">Diplomas desvalorizados</p></div>
+                    <div class="card-premium p-5 text-center rounded-2xl"><i class="fas fa-moon text-4xl text-orange-400 mb-2"></i><p class="font-bold">Choque Cultural</p><p class="text-sm text-gray-400">Religião e costumes</p></div>
+                </div>
+                <div class="mt-6 card-premium p-5 rounded-xl text-center text-gray-200">📊 <strong>Dado:</strong> 68% dos refugiados afegãos em SP apresentam ansiedade/depressão (Cáritas SP, 2024).</div>
+            </section>
+
+            <!-- 5. CULTURA -->
+            <section class="mb-20 animate-fade-up delay-500">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-purple-500/30 to-pink-500/30 p-3 rounded-2xl"><i class="fas fa-utensils text-3xl text-purple-300"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">05.</span> Alma e resistência</h2>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div class="card-premium rounded-3xl p-7">
+                        <i class="fas fa-drumstick-bite text-4xl text-afghan-gold"></i>
+                        <h3 class="text-2xl font-bold mt-2">Kabuli Pulao & Naan</h3>
+                        <p class="mt-2 text-gray-300">O prato nacional: arroz com cordeiro, cenouras caramelizadas e passas. O pão Naan acompanha todas as refeições.</p>
+                        <div class="mt-4 rounded-xl overflow-hidden h-56 border border-purple-500/40">
+                            <img src="https://areferencia.com/wp-content/uploads/2020/05/Naan-Wikimedia-Commons.jpg" class="w-full h-full object-cover img-premium" alt="Naan">
+                        </div>
+                    </div>
+                    <div class="card-premium rounded-3xl p-7">
+                        <i class="fas fa-tshirt text-4xl text-afghan-gold"></i>
+                        <h3 class="text-2xl font-bold mt-2">Vestimentas</h3>
+                        <p class="mt-2 text-gray-300">O Perahan e Tunban, vestidos bordados e o lenço como símbolo de resistência na diáspora.</p>
+                        <div class="mt-4 rounded-xl overflow-hidden h-56 border border-purple-500/40">
+                            <img src="https://i.pinimg.com/736x/40/a6/7d/40a67d074eafa19a24a533c0dc95d284.jpg" class="w-full h-full object-cover img-premium" alt="Vestimentas">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QUIZ CORRIGIDO - BOTÕES LEGÍVEIS -->
+            <section class="mb-20" id="quiz">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-afghan-gold/40 to-cyber-blue/40 p-3 rounded-2xl"><i class="fas fa-gamepad text-3xl text-afghan-gold"></i></div>
+                    <h2 class="text-3xl md:text-4xl font-bold"><span class="gradient-text">⚡ BONUS:</span> Desafio — 5 fases</h2>
+                </div>
+                <div id="quizContainer" class="card-premium rounded-3xl p-8">
+                    <div id="quizContent"></div>
+                </div>
+            </section>
+
+            <!-- CRÉDITOS MINECRAFT -->
+            <section id="credits" class="mb-12">
+                <div class="minecraft-credits-premium rounded-3xl border-2 border-afghan-gold/70 shadow-2xl overflow-hidden">
+                    <div class="bg-black/80 p-3 text-center border-b-2 border-afghan-gold">
+                        <i class="fas fa-crown text-2xl text-afghan-gold"></i> 
+                        <span class="font-['VT323'] text-2xl tracking-widest text-afghan-gold">CREDITS • THANKS FOR PLAYING</span> 
+                        <i class="fas fa-crown text-2xl text-afghan-gold"></i>
+                    </div>
+                    <div class="p-8 text-center space-y-5 font-['VT323'] text-xl text-gray-300">
+                        <p class="text-3xl text-afghan-gold font-bold">⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛</p>
+                        <p><i class="fas fa-code"></i> <span class="text-afghan-gold">PROJETO & DESENVOLVIMENTO:</span> Luan B. Lins (9° Ano A)</p>
+                        <p><i class="fas fa-chalkboard-teacher"></i> <span class="text-afghan-gold">ORIENTAÇÃO:</span> Profª Gislaine • Geografia</p>
+                        <p><i class="fas fa-heart"></i> <span class="text-afghan-gold">COLABORAÇÃO:</span> Kamilly da Cruz</p>
+                        <div class="border-t border-afghan-gold/30 my-4"></div>
+                        <p><i class="fas fa-images"></i> <span class="text-afghan-gold">FONTES DAS IMAGENS:</span></p>
+                        <ul class="text-base space-y-2">
+                            <li>🏔️ Hindu Kush — <strong class="text-cyber-blue">Tripadvisor</strong></li>
+                            <li>👘 Vestimentas — <strong class="text-cyber-blue">Pinterest</strong></li>
+                            <li>🍞 Pão Naan — <strong class="text-cyber-blue">Areferencia / Wikimedia Commons</strong></li>
+                        </ul>
+                        <div class="border-t border-afghan-gold/30 my-4"></div>
+                        <p><i class="fas fa-database"></i> <span class="text-afghan-gold">REFERÊNCIAS:</span> ACNUR, Conare, Adus, Cáritas SP</p>
+                        <p class="text-sm text-gray-500 mt-6">"A verdadeira hospitalidade é acolher quem não tem para onde ir"</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // PARTICLES.JS
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: '#F5B042' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.25, random: true },
+                size: { value: 2, random: true },
+                line_linked: { enable: false },
+                move: { enable: true, speed: 0.4, direction: 'none', random: true, straight: false, out_mode: 'out' }
+            },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'bubble' } }, modes: { bubble: { size: 4, distance: 80 } } }
+        });
+
+        // ========== QUIZ COMPLETAMENTE REFATORADO - BOTÕES LEGÍVEIS ==========
+        const quizData = [
+            { pergunta: "Qual o país de origem dos refugiados abordados no trabalho?", opcoes: ["Síria", "Iraque", "Afeganistão", "Iêmen"], correta: 2, explicacao: "O Afeganistão, após a retomada do Talibã em 2021, gerou um fluxo migratório forçado." },
+            { pergunta: "Qual o principal motivo da fuga em massa dos afegãos a partir de 2021?", opcoes: ["Terremoto devastador", "Retomada do Talibã e perseguição", "Secas extremas", "Guerra civil entre etnias"], correta: 1, explicacao: "O Talibã impôs um regime radical, suprimindo direitos das mulheres e perseguindo opositores." },
+            { pergunta: "Qual instrumento legal permitiu a entrada de afegãos no Brasil com mais facilidade?", opcoes: ["Visto de trabalho", "Visto humanitário especial", "Asilo político temporário", "Reunião familiar"], correta: 1, explicacao: "Portaria Interministerial nº 21/2021 concede visto humanitário para afegãos vulneráveis." },
+            { pergunta: "Qual desses NÃO é um desafio enfrentado por refugiados afegãos em São Paulo?", opcoes: ["Barreira do idioma (Dari/Pashto)", "Revalidação de diplomas demorada", "Acesso garantido a empregos de alto salário", "Choque cultural e preconceito"], correta: 2, explicacao: "Infelizmente, muitos enfrentam subemprego; o acesso a bons salários é um grande obstáculo." },
+            { pergunta: "Qual prato típico afegão, mencionado no site, leva arroz, cordeiro e cenoura caramelizada?", opcoes: ["Mantu", "Ashak", "Kabuli Pulao", "Naan"], correta: 2, explicacao: "Kabuli Pulao é o prato nacional afegão, famoso por sua combinação de sabores e passas." }
+        ];
+
+        let estadoQuiz = {
+            faseAtual: 0,
+            respostas: new Array(5).fill(null),
+            respostaTemp: null
+        };
+
+        function renderizarQuiz() {
+            const container = document.getElementById('quizContent');
+            if (!container) return;
+
+            // Final do quiz
+            if (estadoQuiz.faseAtual >= quizData.length) {
+                const acertos = estadoQuiz.respostas.filter((r, i) => r === quizData[i].correta).length;
+                container.innerHTML = `
+                    <div class="text-center space-y-6">
+                        <i class="fas fa-trophy text-7xl text-afghan-gold animate-bounce"></i>
+                        <p class="text-3xl font-orbitron font-bold gradient-text">🏆 MISSÃO CUMPRIDA! 🏆</p>
+                        <p class="text-xl text-gray-200">Você acertou <span class="text-afghan-gold text-3xl font-bold">${acertos}</span> de ${quizData.length} questões</p>
+                        <div class="bg-afghan-navy/70 p-5 rounded-2xl max-w-md mx-auto border border-afghan-gold/30">
+                            <p class="font-minecraft text-afghan-gold text-lg">RELATÓRIO FINAL:</p>
+                            <p class="text-sm mt-2 text-gray-300">${acertos === 5 ? '🌟 Excelente! Você domina o tema da migração afegã. Parabéns! 🌟' : '📚 Revise os cards do site para se tornar um especialista no tema!'}</p>
+                        </div>
+                        <button id="restartQuiz" class="btn-responder px-8 py-3 rounded-xl font-bold text-lg mx-auto shadow-lg">🔄 REINICIAR DESAFIO</button>
+                    </div>
+                `;
+                document.getElementById('restartQuiz')?.addEventListener('click', () => {
+                    estadoQuiz = { faseAtual: 0, respostas: new Array(5).fill(null), respostaTemp: null };
+                    renderizarQuiz();
+                });
+                return;
+            }
+
+            const questao = quizData[estadoQuiz.faseAtual];
+            const jaRespondido = estadoQuiz.respostas[estadoQuiz.faseAtual] !== null;
+            const respostaUsuario = estadoQuiz.respostas[estadoQuiz.faseAtual];
+            const acertosAteAgora = estadoQuiz.respostas.filter((r, i) => r === quizData[i]?.correta).length;
+
+            // Montar opções com estilo
+            let opcoesHtml = '';
+            questao.opcoes.forEach((opcao, idx) => {
+                let classeExtra = 'cursor-pointer transition-all duration-200 p-4 rounded-xl border-2 mb-3 ';
+                if (jaRespondido) {
+                    if (idx === questao.correta) classeExtra += 'quiz-option-correct border-green-500 ';
+                    else if (idx === respostaUsuario && idx !== questao.correta) classeExtra += 'quiz-option-wrong border-red-500 ';
+                    else classeExtra += 'border-gray-600/50 opacity-60 ';
+                } else {
+                    classeExtra += 'border-gray-600/50 hover:border-afghan-gold hover:bg-afghan-gold/20 ';
+                    if (estadoQuiz.respostaTemp === idx) classeExtra += 'quiz-option-selected border-afghan-gold ';
+                }
+                const checkMark = (jaRespondido && idx === respostaUsuario) ? '<i class="fas fa-check-circle ml-2 text-afghan-gold text-xl"></i>' : '';
+                const correctMark = (jaRespondido && idx === questao.correta && idx !== respostaUsuario) ? '<i class="fas fa-check-circle ml-2 text-green-500 text-xl"></i>' : '';
+                opcoesHtml += `
+                    <div class="${classeExtra}" data-opcao="${idx}">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-200"><span class="font-bold text-afghan-gold text-lg">${String.fromCharCode(65+idx)}.</span> ${opcao}</span>
+                            <span>${checkMark}${correctMark}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Navegação com botões super legíveis
+            let botoesNavegacao = '';
+            if (!jaRespondido) {
+                botoesNavegacao = `
+                    <button id="responderBtn" class="btn-responder px-8 py-3 rounded-xl font-bold w-full mt-6 text-lg shadow-lg" ${estadoQuiz.respostaTemp === null ? 'disabled' : ''}>
+                        <i class="fas fa-check-circle mr-2"></i> RESPONDER FASE ${estadoQuiz.faseAtual + 1}
+                    </button>
+                `;
+            } else {
+                botoesNavegacao = `
+                    <div class="flex justify-between gap-4 mt-6">
+                        ${estadoQuiz.faseAtual > 0 ? '<button id="btnAnterior" class="btn-anterior px-6 py-2 rounded-xl font-semibold shadow-md"><i class="fas fa-arrow-left mr-2"></i> ANTERIOR</button>' : '<div></div>'}
+                        <button id="btnProximo" class="btn-proximo px-8 py-2 rounded-xl font-bold shadow-md">
+                            ${estadoQuiz.faseAtual + 1 === quizData.length ? '<i class="fas fa-flag-checked mr-2"></i> FINALIZAR' : 'PRÓXIMA <i class="fas fa-arrow-right ml-2"></i>'}
+                        </button>
+                    </div>
+                `;
+            }
+
+            // Explicação (se respondido)
+            const explicacaoHtml = jaRespondido ? `
+                <div class="mt-6 p-5 bg-afghan-navy/70 rounded-xl border-l-4 border-afghan-gold">
+                    <i class="fas fa-lightbulb text-afghan-gold mr-2 text-xl"></i>
+                    <strong class="text-afghan-gold">Explicação:</strong>
+                    <p class="mt-1 text-gray-200">${questao.explicacao}</p>
+                </div>
+            ` : '';
+
+            container.innerHTML = `
+                <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+                    <div class="bg-afghan-gold/20 px-4 py-2 rounded-full text-sm font-orbitron border border-afghan-gold/40">
+                        <i class="fas fa-layer-group text-afghan-gold"></i> FASE ${estadoQuiz.faseAtual + 1} / ${quizData.length}
+                    </div>
+                    <div class="text-cyber-blue font-minecraft text-xl font-bold">
+                        ⚡ ACERTOS: ${acertosAteAgora}
+                    </div>
+                </div>
+                <div class="border-b border-afghan-gold/30 mb-6"></div>
+                <p class="text-2xl font-orbitron mb-6 leading-relaxed text-gray-100">🎯 ${questao.pergunta}</p>
+                <div id="opcoesQuiz">${opcoesHtml}</div>
+                ${explicacaoHtml}
+                ${botoesNavegacao}
+            `;
+
+            // Eventos das opções (apenas se não respondeu)
+            if (!jaRespondido) {
+                document.querySelectorAll('[data-opcao]').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        const opt = parseInt(el.dataset.opcao);
+                        estadoQuiz.respostaTemp = opt;
+                        renderizarQuiz();
+                    });
+                });
+            }
+
+            // Botão responder
+            const responderBtn = document.getElementById('responderBtn');
+            if (responderBtn) {
+                responderBtn.addEventListener('click', () => {
+                    if (estadoQuiz.respostaTemp !== null) {
+                        estadoQuiz.respostas[estadoQuiz.faseAtual] = estadoQuiz.respostaTemp;
+                        estadoQuiz.respostaTemp = null;
+                        renderizarQuiz();
+                    }
+                });
+            }
+
+            // Botão próximo
+            const proximoBtn = document.getElementById('btnProximo');
+            if (proximoBtn) {
+                proximoBtn.addEventListener('click', () => {
+                    if (estadoQuiz.faseAtual + 1 < quizData.length) {
+                        estadoQuiz.faseAtual++;
+                        renderizarQuiz();
+                    } else {
+                        estadoQuiz.faseAtual = quizData.length;
+                        renderizarQuiz();
+                    }
+                });
+            }
+
+            // Botão anterior
+            const anteriorBtn = document.getElementById('btnAnterior');
+            if (anteriorBtn) {
+                anteriorBtn.addEventListener('click', () => {
+                    if (estadoQuiz.faseAtual > 0) {
+                        estadoQuiz.faseAtual--;
+                        renderizarQuiz();
+                    }
+                });
+            }
+        }
+
+        renderizarQuiz();
+    </script>
+</body>
+</html>
